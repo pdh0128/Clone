@@ -11,17 +11,19 @@
                 
             }
             canvas {
-                background-color: green;
+                background-image: url('흙.jpeg');
+                background-size: cover;
                 margin : auto 0;
             }
-            div #score {
-                margin : auto;
+            div {
+                padding-left : 500px;
             }
         </style>
     </head>
 
     <body>
-            <div>점수 : <div id = "score"></div></div>
+            <div>   점수 : <span id = "score"></span><br>대쉬 : <span id = "time">사용가능</span> </div>
             <canvas id = 'jirung'></canvas>
+            <script src = 'profile.js'></script>
     </body>
 </html>

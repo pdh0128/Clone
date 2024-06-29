@@ -5,7 +5,6 @@ function start () {
 function help () {
     location.replace('help.html');
 }
-
-function main () {
-    location.replace('main.html');
+function profile () {
+    location.replace('profile.html');
 }
