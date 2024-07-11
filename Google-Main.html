@@ -4,200 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOOGLE</title>
-    <style>
-        body {
-            background-color: #3C3C3C;
-            color: white;
-            height: 100%;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        #HIGHBAR {
-            display: flex;
-            justify-content: flex-end;
-            padding: 10px;
-            gap: 30px;
-            font-size: 15px;
-            align-items: center;
-            cursor: pointer;
-            width: 98%;
-        }
-        #HIGHBAR span:hover {
-            text-decoration: underline;
-        }
-        #HIGHBAR img {
-            width: 20px;
-            height: 20px;
-        }
-        #HIGHBAR img:hover {
-            background-color: rgba(240, 255, 255, 0.242);
-        }
-        #HIGHBAR #MANDONG {
-            width: 35px;
-            height: 35px;
-        }
-        #G {
-            font-size: 100px;
-            text-align: center;
-            margin-top: 100px;
-            cursor: pointer;
-        }
-        form {
-            background-color: white;
-            display: flex;
-            justify-content: space-between;
-            border-radius: 20px;
-            width: 600px;
-            height: 45px;
-            margin: 20px auto;
-            align-items: center;
-        }
-        input {
-            width: 68%;
-            height: 30px;
-            border: none;
-        }
-        form img {
-            padding: 20px;
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
-        .control-box {
-            display: flex;
-            justify-content: center;
-            width: 100%;
-            visibility:visible;
-        }
-        .control-box img {
-            margin-right: 40px;
-            margin-left: 40px;
-            margin-top: 20px;
-            cursor: pointer;
-            
-        }
-        #button {
-            display: flex;
-            justify-content: flex-end;
-            align-items: flex-end;
-            height: 210px;
-            margin-right: 0px;
-            
-        }
-        button {
-            width: 170px;
-            height: 40px;
-            border-radius: 20px;
-            box-shadow: soft;
-            background-color: #004A76;
-            color: #C2E7FE;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-        button img {
-            width: 20px;
-            height: 20px;
-        }
-        #option {
-            height: 100vh;
-            width: 250px;
-            display: none;
-            justify-content: flex-end;
-            align-items: flex-start;
-            position: fixed;
-            
-        }
-        #option div {
-            height: 100%;
-            width: 100%;
-            border: 0.2px solid black;
-            background-color: #454746;
-        }
-        #BACK {
-            width : 100%;
-            height: 100%;
-        }
-        #option h1 {
-            margin-top: 50px;
-            text-align: center;
-            background-color: #3C3C3C;
-        }
-        #option img {
-            width: 80px;
-            height: 80px;
-        }
-        .palret {
-            display : flex;
-            flex-wrap: wrap;
-            align-content: flex-start;
-        }
-        .palret img {
-            margin : auto;
-        }
-        .switch {
-            position: relative;
-            display: inline-block;
-            width: 60px;
-            height: 34px;
-        }
-        
-        .switch input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        
-        .slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: .4s;
-            border-radius: 34px;
-        }
-        
-        .slider:before {
-            position: absolute;
-            content: "";
-            height: 26px;
-            width: 26px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: .4s;
-            border-radius: 50%;
-        }
-        
-        input:checked + .slider {
-            background-color: #2196F3;
-        }
-        
-        input:checked + .slider:before {
-            transform: translateX(26px);
-        }
-
-        .baro {
-            display : flex;
-            justify-content: center;
-            margin-top : 10px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="Google.css">
 </head>
 <body>
-    
-    <div id="BACK"> 
-    
+    <div id="BACK">
         <div id="HIGHBAR">
             <span onClick="MOVEPAGE('https://mail.google.com/mail')">Gmail</span>
             <span onClick="MOVEPAGE('https://www.google.com/imghp?hl=ko&tab=ri&authuser=0&ogbl')">이미지</span>
@@ -205,62 +15,78 @@
             <img src="_메뉴.png">
             <img src="감만동.png" id="MANDONG">
         </div>
-    
+        <div class="profile">
+            <div>mandong@gmail.com</div>
+            <img src="감만동.png">
+            
+                <div class = "devops" onclick="location.href= 'https://myaccount.google.com'" >계졍 관리</div>
+                <div id = "drop" onclick = toggleDropdown()>계정 더보기
+                    <div class = "downA">^</div>
+                </div>
+
+                <div id = "droped">
+                    <h1>동현</h1>
+                    <div>24.022@bssm.hs.kr</div>
+                </div>
+        </div>
         <div id="G" style="cursor: pointer;" onClick="MOVEPAGE('https://www.google.co.kr/?hl=ko')">Google</div>
-        <form>
+        <div id="serachbar">
             <img src="돋보기.png" onclick="LOAD()">
-            <input type="text" placeholder="Google 검색 또는 URL 입력" name="Search">
+            <input type="text" id="searchInput" placeholder="Google 검색 또는 URL 입력" name="Search">
             <img src="마이크.png">
             <img src="_카메라.png" onClick="MOVEPAGE('CAMERA.html')">
-        </form>
-        
-        <div class="control-box">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
+        </div>
+        <div class="S_BAR">
+            <a href="#" class="TITLE"></a><br>
+            <a href="#" class="TITLE"></a><br>
+            <a href="#" class="TITLE"></a><br>
+            <a href="#" class="TITLE"></a>
         </div>
         <div class="control-box">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
-            <img src="Youtube.png" onClick="MOVEPAGE('')">
+            <img src="Youtube.png" onClick="MOVEPAGE('https://www.youtube.com/')">
+            <img src="Gpt.icon.png" onClick="MOVEPAGE('https://chatgpt.com/')">
+            <img src="BACKJOON.png" onClick="MOVEPAGE('https://www.acmicpc.net/')">
+            <img src="BOOTSTRAP.png" onClick="MOVEPAGE('https://getbootstrap.com/')">
+            <img src="FIGMA.png" onClick="MOVEPAGE('https://www.figma.com')">
         </div>
-    
-        <div id="button">
-            <button onClick="OPTION()" id = "CHOPTION"><span><img src="연필.png">Chrome 맞춤설정</span></button>
+        <div class="control-box">
+            <img src="GITHUB.png" onClick="MOVEPAGE('https://github.com/')">
+            <img src="VIVE.png" onClick="MOVEPAGE('https://vibe.naver.com/')">
+            <img src="NAVER.png" onClick="MOVEPAGE('https://www.naver.com/')">
+            <img src="Youtube.png" onClick="MOVEPAGE('https://www.youtube.com/')">
+        </div>
 
+        <div id="button">
+            <button onClick="OPTION()" id="CHOPTION"><span><img src="연필.png">Chrome 맞춤설정</span></button>
             <div id="option">
                 <div>
                     <h1>크롬 맞춤설정</h1>
                     <div class="palret">
-                        <img src = "팔레트/팔레트1.jpeg">
-                        <img src = "팔레트/팔레트2.png">
-                        <img src = "팔레트/팔레트3.png">
-                        <img src = "팔레트/팔레트4.png">
-                        <img src = "팔레트/팔레트5.png">
-                        <img src = "팔레트/팔레트6.png">
-                        <img src = "팔레트/팔레트7.png">
-                        <img src = "팔레트/팔레트8.png">
-                        <img src = "팔레트/팔레트9.png">
-                        <img src = "팔레트/팔레트10.png">
-                        <img src = "팔레트/팔레트11.png">
+                        <img src="팔레트/팔레트1.jpeg" onClick="COLOR('#3C3C3C')">
+                        <img src="팔레트/팔레트2.png" onClick="COLOR('#657794')">
+                        <img src="팔레트/팔레트3.png" onClick="COLOR('#27b355')">
+                        <img src="팔레트/팔레트4.png" onClick="COLOR('#6cabd6')">
+                        <img src="팔레트/팔레트5.png" onClick="COLOR('#27bd2c')">
+                        <img src="팔레트/팔레트6.png" onClick="COLOR('#d68f2b')">
+                        <img src="팔레트/팔레트7.png" onClick="COLOR('#c13e21')">
+                        <img src="팔레트/팔레트8.png" onClick="COLOR('#b420b4')">
+                        <img src="팔레트/팔레트9.png" onClick="COLOR('#63115b')">
+                        <img src="팔레트/팔레트10.png" onClick="COLOR('#121481')">
+                        <img src="팔레트/팔레트11.png" onClick="COLOR('#ac8c1a')">
                         <div class="baro">
-                        <h3>바로가기 끄기</h3>
-                        
-                        <label class="switch">
-                            <input type="checkbox" onclick="PALA()">
-                            <span class="slider"></span>
-                        </label>
+                            <h3>바로가기 끄기</h3>
+                            <label class="switch">
+                                <input type="checkbox" onclick="PALA()">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-    
-
+        </div>
     </div>
 
+    <div id="overlay"></div>
 
     <script>
         const MOVEPAGE = (address) => {
@@ -272,21 +98,91 @@
         const OPTION = () => {
             const optionDiv = document.getElementById('option');
             optionDiv.style.display = optionDiv.style.display === 'none' ? 'flex' : 'none';
+            
             const HIGHBAR = document.querySelector("#HIGHBAR");
             HIGHBAR.style.width = HIGHBAR.style.width === "98%" ? "81%" : "98%";
             const CHOPTION = document.querySelector("#CHOPTION");
             CHOPTION.style.marginRight = CHOPTION.style.marginRight === "0px" ? "260px" : "0px";
         };
-        
 
         const PALA = () => {
             const gooi = document.querySelectorAll(".control-box");
             gooi.forEach(e => {
                 e.style.visibility = e.style.visibility === "hidden" ? "visible" : "hidden";
-                }
-            )
+            });
         }
+        const COLOR = (color) => {
+            const overlay = document.getElementById('overlay');
+            overlay.style.backgroundColor = `rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.2)`;
+            overlay.style.display = (color === '#3C3C3C') ? "none" : "block"
+        }
+
+        const Key = 'AIzaSyAxJY-U4-ujyXLtTEan7bh3Rdu_4JFM2C0'; 
+        const searchId = '8363f8764f02d4024'; 
+
         
+        function googleSearch(query) {
+            const url = `https://www.googleapis.com/customsearch/v1?key=${Key}&cx=${searchId}&q=${query}`;
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    const TITLE = document.querySelectorAll(".TITLE");
+                    for (let i = 0; i < TITLE.length; i++) {
+                        TITLE[i].innerText = ""; // 초기화
+                        TITLE[i].href = ""; // 초기화
+                    }
+
+                    if (data.items) {
+                        for (let i = 0; i < Math.min(data.items.length, 4); i++) {
+                            const item = data.items[i];
+                            const title = item.title;
+                            const link = item.link;
+                            console.log(`Title: ${title}`);
+                            TITLE[i].innerText = title;
+                            console.log(`Link: ${link}\n`);
+                            TITLE[i].href = link;
+                        }
+                    } else {
+                        console.log('No items found');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        }
+
+        document.querySelector("#searchInput").addEventListener('keydown', (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                const S_Bar = document.querySelector(".S_BAR");
+                S_Bar.style.display = 'block';
+                const query = e.target.value;
+                googleSearch(query);
+            }
+        });
+
+        document.querySelector("#searchInput").addEventListener('blur', () => {
+        const searchInputValue = document.querySelector("#searchInput").value.trim();
+        if (searchInputValue === "") {
+            document.querySelector(".S_BAR").style.display = 'none';
+        }
+}); 
+const profile = document.querySelector('.profile');
+
+document.querySelector('#MANDONG').addEventListener("click", () => {
+    profile.style.display = profile.style.display === 'flex' ? 'none' : 'flex'; 
+})
+
+
+
+const toggleDropdown = () => {
+            document.querySelector('.downA').classList.toggle('rotate');
+            document.querySelector(".devops").style.borderBottomRightRadius = "0%";
+            document.querySelector(".devops").style.borderBottomLeftRadius = "0%";
+            
+        }
+
     </script>
 </body>
 </html>
