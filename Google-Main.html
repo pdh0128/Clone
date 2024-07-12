@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GOOGLE</title>
+
     <link rel="stylesheet" href="Google.css">
+    <link rel="stylesheet" href="HIGHBAR.css">
+    <link rel="stylesheet" href="Chrome-option.css">
+    <link rel="stylesheet" href="profile.css">
+
 </head>
 <body>
     <div id="BACK">
@@ -16,22 +21,38 @@
             <img src="감만동.png" id="MANDONG">
         </div>
         <div class="profile">
-            <div>mandong@gmail.com</div>
+            
+            <div id = 'Gmail'>mandong@gmail.com</div>
             <img src="감만동.png">
             
+            
                 <div class = "devops" onclick="location.href= 'https://myaccount.google.com'" >계졍 관리</div>
-                <div id = "drop" onclick = toggleDropdown()>계정 더보기
+                <div id = "drop" onclick = toggleDropdown()><span id ='ejqhrl'>계정 더보기</span>
                     <div class = "downA">^</div>
                 </div>
 
-                <div id = "droped">
-                    <h1>동현</h1>
-                    <div>24.022@bssm.hs.kr</div>
+                <div class = "droped" onclick="toggleDropdown(); swapContent(1)">
+                    <h1 id = 'val1'>동현</h1>
+                    <p id = 'val1@'>24.022@bssm.hs.kr</p>
                 </div>
+
+                <div class = "droped" onclick="toggleDropdown(); swapContent(2)">
+                    <h1 id = 'val2'>준희</h1>
+                    <p id = 'val2@'>08HwangJH@gmail.com</p>
+                </div>
+
+                <div class = "droped Logout">
+                    <h1>로그아웃</h1>
+                </div>
+                <span class="dirrhks">
+                    <span class="cjflback" onclick = 'location.href = "https://policies.google.com/privacy" '>개인정보 처리방침</span>
+                    <span class = "wndrkswja">·</span> 
+                    <span class="cjflback" onclick = 'location.href = "https://policies.google.com/terms" '>서비스 약관</span>
+                </span>
         </div>
-        <div id="G" style="cursor: pointer;" onClick="MOVEPAGE('https://www.google.co.kr/?hl=ko')">Google</div>
+        <div id="G">Google</div>
         <div id="serachbar">
-            <img src="돋보기.png" onclick="LOAD()">
+            <img src="돋보기.png" style='cursor: default;' onclick="LOAD()">
             <input type="text" id="searchInput" placeholder="Google 검색 또는 URL 입력" name="Search">
             <img src="마이크.png">
             <img src="_카메라.png" onClick="MOVEPAGE('CAMERA.html')">
@@ -97,11 +118,15 @@
         }
         const OPTION = () => {
             const optionDiv = document.getElementById('option');
+            optionDiv.style.display = optionDiv.style.display || 'none';
             optionDiv.style.display = optionDiv.style.display === 'none' ? 'flex' : 'none';
             
             const HIGHBAR = document.querySelector("#HIGHBAR");
+            HIGHBAR.style.width = HIGHBAR.style.width || "98%";
             HIGHBAR.style.width = HIGHBAR.style.width === "98%" ? "81%" : "98%";
+
             const CHOPTION = document.querySelector("#CHOPTION");
+            CHOPTION.style.marginRight = CHOPTION.style.marginRight || "0px";
             CHOPTION.style.marginRight = CHOPTION.style.marginRight === "0px" ? "260px" : "0px";
         };
 
@@ -155,7 +180,7 @@
         document.querySelector("#searchInput").addEventListener('keydown', (e) => {
             if (e.key === "Enter") {
                 e.preventDefault();
-                const S_Bar = document.querySelector(".S_BAR");
+                const S_Bar = document.querySelector(".S_BAR"); //S_BAR = Search Bar
                 S_Bar.style.display = 'block';
                 const query = e.target.value;
                 googleSearch(query);
@@ -168,20 +193,92 @@
             document.querySelector(".S_BAR").style.display = 'none';
         }
 }); 
+
 const profile = document.querySelector('.profile');
 
-document.querySelector('#MANDONG').addEventListener("click", () => {
-    profile.style.display = profile.style.display === 'flex' ? 'none' : 'flex'; 
+document.querySelector('#MANDONG').addEventListener("click", (e) => {
+    e.stopPropagation(); //이벤트가 부모요소로 안빠져나가고 지한테 끝나는 매서드
+    profile.style.display = profile.style.display === 'flex' ? 'none' : 'flex';
 })
 
+const dropeds = document.querySelectorAll('.droped');
 
+dropeds.forEach(droped => {
+    droped.addEventListener("click", (e) => {
+        e.stopPropagation(); 
+        profile.style.display = profile.style.display === 'flex' ? 'none' : 'flex';
+
+    });
+});
+
+
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.profile')) {
+        return;
+    }
+    profile.style.display = 'none';
+})
 
 const toggleDropdown = () => {
             document.querySelector('.downA').classList.toggle('rotate');
-            document.querySelector(".devops").style.borderBottomRightRadius = "0%";
-            document.querySelector(".devops").style.borderBottomLeftRadius = "0%";
-            
+            const Drop = document.querySelector("#drop");
+            Drop.style.borderBottomRightRadius = "0%";
+            Drop.style.borderBottomLeftRadius = "0%";
+            const Te = document.querySelector('#ejqhrl');
+            Te.innerText = Te.innerText === '계정 더보기' ? '계정 더보기 숨기기' : '계정 더보기';
+            droped = document.querySelectorAll(".droped");
+            droped.forEach (s => {
+                s.style.display = s.style.display == "flex" ? "none" : "flex";
+            })
+            droped[droped.length - 1].style.borderBottomLeftRadius = '20px';
+            droped[droped.length - 1].style.borderBottomRightRadius = '20px';
+            const profile = document.querySelector('.profile');
+            profile.style.height = profile.style.height === '450px' ? '300px' : '450px'; 
+    }
+
+    const swapContent = (index) => {
+    const Gmail = document.getElementById('Gmail');
+    const val1 = document.getElementById('val1');
+    const v1 = document.getElementById('val1@');
+    const val2 = document.getElementById('val2');
+    const v2 = document.getElementById('val2@');
+    
+    const profiles = [
+        { name: '만동', email: 'mandong@gmail.com' },
+        { name: '동현', email: '24.022@bssm.hs.kr' },
+        { name: '준희', email: '08HwangJH@gmail.com' }
+    ];
+
+    let currentIndex = profiles.findIndex(profile => profile.email === Gmail.innerText);
+    let targetIndex = index;
+
+    if (currentIndex !== -1 && targetIndex !== -1) {
+        
+        [profiles[currentIndex], profiles[targetIndex]] = [profiles[targetIndex], profiles[currentIndex]];
+
+        
+        Gmail.innerText = profiles[currentIndex].email;
+        document.getElementById('val' + (targetIndex)).innerText = profiles[targetIndex].name;
+        document.getElementById('val' + (targetIndex) + '@').innerText = profiles[targetIndex].email;
+
+        if (currentIndex === 0) {
+            val1.innerText = profiles[1].name;
+            v1.innerText = profiles[1].email;
+            val2.innerText = profiles[2].name;
+            v2.innerText = profiles[2].email;
+        } else if (currentIndex === 1) {
+            val1.innerText = profiles[0].name;
+            v1.innerText = profiles[0].email;
+            val2.innerText = profiles[2].name;
+            v2.innerText = profiles[2].email;
+        } else {
+            val1.innerText = profiles[0].name;
+            v1.innerText = profiles[0].email;
+            val2.innerText = profiles[1].name;
+            v2.innerText = profiles[1].email;
         }
+    }
+};
 
     </script>
 </body>
