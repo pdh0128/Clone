@@ -214,8 +214,8 @@
         <div id="serachbar">
             <img src="돋보기.png" style='cursor: default;' onclick="LOAD()">
             <input type="text" id="searchInput" placeholder="Google 검색 또는 URL 입력" name="Search">
-            <img src="마이크.png">
-            <img src="_카메라.png" onClick="MOVEPAGE('CAMERA.html')">
+            <img src="마이크.png" id="mic">
+            <img src="_카메라.png" onClick="alert('이미지 검색기능을 만들기 어려울 것 같습니다 죄송합니다')">
         </div>
         <div class="S_BAR">
             <a href="#" class="TITLE"></a><br>
@@ -252,7 +252,7 @@
             </div>
             <div class="image-container">
                 <img src="VIVE.png" onClick="MOVEPAGE('https://vibe.naver.com/')" alt="Vive">
-                <span>Vive</span>
+                <span>Vibe</span>
             </div>
             <div class="image-container">
                 <img src="NAVER.png" onClick="MOVEPAGE('https://www.naver.com/')" alt="Naver">
@@ -295,7 +295,7 @@
     </div>
 
     <div id="overlay"></div>
-
+    
     <script>
         const MOVEPAGE = (address) => {
             location.href = address;
@@ -394,7 +394,6 @@ dropeds.forEach(droped => {
     droped.addEventListener("click", (e) => {
         e.stopPropagation(); 
         profile.style.display = profile.style.display === 'flex' ? 'none' : 'flex';
-
     });
 });
 
@@ -472,6 +471,30 @@ const MENU = document.querySelector("#MENU");
 MENU.addEventListener('click', () => {
     menu.style.display = menu.style.display === "block" ? "none" : "block";
 })
+
+let micOn = false; // Web speech API 사용
+document.querySelector("#mic").addEventListener('click', () => {
+
+    const recognition = new webkitSpeechRecognition();
+    recognition.lang = 'ko-KR';
+
+    recognition.onresult = function(event) {
+    const transcript = event.results[0][0].transcript;
+    const INPUT = document.querySelector("#searchInput");
+    INPUT.value = transcript.trim();
+    INPUT.focus();
+};
+    
+    if(micOn) {
+        recognition.stop();
+        micOn = false;
+    }
+    else {
+        recognition.start();
+        micOn = true;
+    }
+})
+
 
     </script>
 </body>

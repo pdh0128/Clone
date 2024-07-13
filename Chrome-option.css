@@ -65,6 +65,8 @@ button img {
     margin : auto;
 }
 .switch {
+    margin-top : 12px;
+    margin-left : 10px;
     position: relative;
     display: inline-block;
     width: 60px;
