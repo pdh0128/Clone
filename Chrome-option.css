@@ -25,7 +25,7 @@ button img {
 }
 
 #CHOPTION {
-    margin-bottom: 30px;
+    margin-bottom: 120px;
 }
 #CHOPTION:hover {
     background-color: #04688d;
@@ -37,6 +37,7 @@ button img {
     justify-content: flex-end;
     align-items: flex-start;
     position: fixed;
+    margin-bottom: 30px;
     
 }
 #option div {
