@@ -424,47 +424,47 @@
             profile.style.height = profile.style.height === '450px' ? '300px' : '450px';
         }
         const profiles = [
-            { name: '만동', email: 'mandong@gmail.com' },
-            { name: '동현', email: '24.022@bssm.hs.kr' },
-            { name: '준희', email: '08HwangJH@gmail.com' }
-        ];
+    { name: '만동', email: 'mandong@gmail.com' },
+    { name: '동현', email: '24.022@bssm.hs.kr' },
+    { name: '준희', email: '08HwangJH@gmail.com' }
+];
 
-        const swapContent = (index) => {
-            const Gmail = document.getElementById('Gmail');
-            const val1 = document.getElementById('val1');
-            const v1 = document.getElementById('val1@');
-            const val2 = document.getElementById('val2');
-            const v2 = document.getElementById('val2@');
+const swapContent = (index) => {
+    const Gmail = document.getElementById('Gmail');
+    const val1 = document.getElementById('val1');
+    const v1 = document.getElementById('val1@');
+    const val2 = document.getElementById('val2');
+    const v2 = document.getElementById('val2@');
 
-            const selectedProfile = profiles[index];
+    const currentEmail = Gmail.innerText.trim();
 
-            const currentEmail = Gmail.innerText;
-            const currentIndex = profiles.findIndex(profile => profile.email === currentEmail);
+    const currentIndex = profiles.findIndex(profile => profile.email === currentEmail);
 
-            if (currentIndex !== -1 && currentIndex !== index) {
-                Gmail.innerText = selectedProfile.email;
-                const remainingProfiles = profiles.filter((_, i) => i !== index);
-                if (currentIndex === 0) {
-                    val1.innerText = remainingProfiles[0].name;
-                    v1.innerText = remainingProfiles[0].email;
-                    val2.innerText = remainingProfiles[1].name;
-                    v2.innerText = remainingProfiles[1].email;
-                }
-                else if (currentIndex === 1) {
-                    val1.innerText = remainingProfiles[1].name;
-                    v1.innerText = remainingProfiles[1].email;
-                    val2.innerText = remainingProfiles[0].name;
-                    v2.innerText = remainingProfiles[0].email;
-                }
-            }
-            else if (currentIndex === index) {
-                Gmail.innerText = profiles[0].email;
-                val1.innerText = profiles[1].name;
-                v1.innerText = profiles[1].email;
-                val2.innerText = profiles[2].name;
-                v2.innerText = profiles[2].email;
-            }
-        };
+    
+    if (currentIndex !== index) {
+        
+        const tempName = profiles[currentIndex].name;
+        const tempEmail = profiles[currentIndex].email;
+
+        profiles[currentIndex].name = profiles[index].name;
+        profiles[currentIndex].email = profiles[index].email;
+
+        profiles[index].name = tempName;
+        profiles[index].email = tempEmail;
+
+
+        Gmail.innerText = profiles[currentIndex].email;
+        val1.innerText = profiles[(currentIndex + 1) % 3].name;
+        v1.innerText = profiles[(currentIndex + 1) % 3].email;
+
+        val2.innerText = profiles[(currentIndex + 2) % 3].name;
+        v2.innerText = profiles[(currentIndex + 2) % 3].email;
+    }
+}
+
+
+
+       
         const menu = document.querySelector(".menu");
         const MENU = document.querySelector("#MENU");
         MENU.addEventListener('click', () => {
