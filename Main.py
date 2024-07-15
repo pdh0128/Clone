@@ -13,6 +13,7 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://ioting-3a752-default-rtdb.firebaseio.com'
 })
 
+
 ref = db.reference('/')
 
 st.title('이것은 내 페이지다')

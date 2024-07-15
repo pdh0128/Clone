@@ -11,7 +11,7 @@ if 'score' not in st.session_state:
 problem1 = st.text_input('이 사람의 아버지 성함은?')
 
 problem2 = st.radio("이 사람의 축구실력은?", [":red[상]", ":blue[중상]", ":green[중]", "중하", ":gray[하]"])
-ref = db.reference('/')
+ref = db.reference('')
 if st.button('제출하기') :
     if (problem1 == "강래식") :
         st.session_state.score += 80
