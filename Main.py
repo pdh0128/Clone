@@ -6,7 +6,7 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import db
 
-ref = db.reference('')
+ref = db.reference('/')
 
 st.title('이것은 내 페이지다')
 st.header('말하겠다 :sunglasses:')
